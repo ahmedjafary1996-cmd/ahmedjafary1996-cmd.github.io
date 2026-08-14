@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>TikTok OAuth Callback</title></head>
+<body>
+<h1>TikTok authorization received</h1>
+<p>Copy the authorization code below and exchange it on a secure machine. This page does not store or transmit the code.</p>
+<pre id="output"></pre>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const state = params.get('state') || '';
+  const code = params.get('code') || '';
+  const error = params.get('error') || '';
+  const output = document.getElementById('output');
+  output.textContent = error ? `error=${error}` : `code=${code}\nstate=${state}`;
+</script>
+</body>
+</html>
